@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Program — Vasco Connor | TechTutor Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F1E8;
+    --ink: #1A1814;
+    --ink-light: #6B6558;
+    --ink-faint: #C4BFB2;
+    --green: #2D5C3A;
+    --green-light: #EAF2EC;
+    --blue: #1D3D6B;
+    --blue-light: #E8EEF7;
+    --amber: #7A4E10;
+    --amber-light: #FBF0E0;
+    --purple: #3D2968;
+    --purple-light: #EEE9F8;
+    --teal: #0E5045;
+    --teal-light: #E4F3F0;
+    --rule: #DDD8CE;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 80px 60px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--rule);
+    
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .academy-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    border: 1px solid var(--rule);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--ink-faint); }
+
+  .prepared-for {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(42px, 6vw, 68px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--green);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--ink-light);
+    max-width: 540px;
+    margin-bottom: 36px;
+    margin-top: 12px;
+  }
+
+  .meta-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .meta-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ink);
+    background: white;
+    border: 1px solid var(--rule);
+    padding: 6px 14px;
+    border-radius: 20px;
+  }
+
+  .meta-pill span { color: var(--ink-light); font-size: 12px; }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 60px 100px;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .phase-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 56px 0 20px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 0;
+  }
+
+  .phase-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    min-width: 60px;
+  }
+
+  .phase-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    letter-spacing: -0.01em;
+  }
+
+  .phase-lessons {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--ink-light);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ── LESSON CARDS ── */
+  .lesson {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 0 24px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .lesson-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--ink-faint);
+    line-height: 1;
+    padding-top: 4px;
+  }
+
+  .lesson-body {}
+
+  .lesson-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .lesson-desc {
+    font-size: 14px;
+    color: var(--ink-light);
+    margin-bottom: 12px;
+    max-width: 580px;
+    line-height: 1.6;
+  }
+
+  .lesson-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.02em;
+  }
+
+  .tag-green { background: var(--green-light); color: var(--green); }
+  .tag-blue { background: var(--blue-light); color: var(--blue); }
+  .tag-purple { background: var(--purple-light); color: var(--purple); }
+  .tag-amber { background: var(--amber-light); color: var(--amber); }
+  .tag-teal { background: var(--teal-light); color: var(--teal); }
+
+  /* phase accent bars */
+  .phase-green .phase-title { color: var(--green); }
+  .phase-blue .phase-title { color: var(--blue); }
+  .phase-purple .phase-title { color: var(--purple); }
+  .phase-amber .phase-title { color: var(--amber); }
+
+  /* ── TOOLS SECTION ── */
+  .tools-section {
+    margin-top: 72px;
+    padding-top: 40px;
+    border-top: 2px solid var(--ink);
+  }
+
+  .tools-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+
+  .tools-sub {
+    font-size: 14px;
+    color: var(--ink-light);
+    margin-bottom: 36px;
+  }
+
+  .tools-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+
+  .tool-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .tool-icon {
+    font-size: 22px;
+    line-height: 1;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .tool-name {
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .tool-badge {
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 7px;
+    border-radius: 20px;
+    letter-spacing: 0.03em;
+  }
+
+  .badge-owned { background: var(--blue-light); color: var(--blue); }
+  .badge-free { background: var(--green-light); color: var(--green); }
+  .badge-required { background: var(--amber-light); color: var(--amber); }
+
+  .tool-desc { font-size: 13px; color: var(--ink-light); line-height: 1.5; margin-bottom: 4px; }
+  .tool-url { font-size: 11px; color: var(--ink-faint); }
+  .tool-price { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+  .price-free { color: var(--green); }
+  .price-paid { color: var(--amber); }
+  .price-zero { color: var(--blue); }
+
+  /* Seedance options */
+  .seedance-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .s-option {
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+
+  .s-option.rec { border-color: var(--blue); }
+  .s-option-label { font-size: 10px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; }
+  .s-option-name { font-size: 13px; font-weight: 500; margin-bottom: 1px; }
+  .s-option-price { font-size: 13px; color: var(--amber); font-weight: 500; margin-bottom: 2px; }
+  .s-option-note { font-size: 11px; color: var(--ink-light); line-height: 1.4; }
+
+  /* ── COST SUMMARY ── */
+  .cost-box {
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 14px;
+    padding: 28px 32px;
+  }
+
+  .cost-box-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: var(--cream);
+  }
+
+  .cost-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .cost-line .label { color: rgba(245,241,232,0.6); }
+  .cost-line .val { font-weight: 500; }
+  .val-free { color: #7EC993; }
+  .val-paid { color: #F5C878; }
+
+  .cost-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 16px;
+    padding-top: 4px;
+  }
+
+  .cost-total .label { font-size: 14px; color: rgba(245,241,232,0.6); }
+  .cost-total .amount { font-family: 'DM Serif Display', serif; font-size: 34px; }
+  .cost-note { font-size: 12px; color: rgba(245,241,232,0.4); margin-top: 8px; }
+
+  /* ── FOOTER ── */
+  .footer {
+    border-top: 1px solid var(--rule);
+    padding: 32px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: var(--ink-faint);
+  }
+
+  /* ── ANIMATIONS ── */
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 680px) {
+    /* Layout */
+    .hero { padding: 40px 20px 32px; }
+    .container { padding-left: 20px; padding-right: 20px; padding-bottom: 60px; }
+    .footer { flex-direction: column; gap: 8px; padding: 24px 20px; text-align: center; }
+
+    /* Hero */
+    .hero h1 { font-size: 36px; }
+    .hero-sub { font-size: 15px; }
+    .hero-eyebrow { flex-wrap: wrap; gap: 8px; }
+    .meta-pills { gap: 6px; }
+    .meta-pill { font-size: 12px; padding: 5px 12px; }
+
+    /* Phase headers */
+    .phase-header { flex-wrap: wrap; gap: 4px; padding: 36px 0 16px; }
+    .phase-title { font-size: 22px; }
+    .phase-lessons { display: none; }
+    .phase-num { min-width: unset; }
+
+    /* Lessons */
+    .lesson { grid-template-columns: 36px 1fr; gap: 0 14px; padding: 20px 0; }
+    .lesson-num { font-size: 22px; }
+    .lesson-title { font-size: 17px; }
+    .lesson-desc { font-size: 13px; }
+
+    /* Tools */
+    .tools-grid { grid-template-columns: 1fr; }
+    .seedance-options { grid-template-columns: 1fr; }
+    .tools-heading { font-size: 26px; }
+
+    /* Cost box */
+    .cost-box { padding: 20px; }
+    .cost-total .amount { font-size: 26px; }
+
+    /* Inline grids in outcomes, glossary, program fee */
+    div[style*="grid-template-columns: 1fr 1fr"] {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    div[style*="grid-template-columns: 180px 1fr"] {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 4px !important;
+    }
+
+    /* Program fee numbers */
+    div[style*="font-size: 42px"] { font-size: 32px !important; }
+
+    /* Section headings */
+    h2[style*="font-size: 32px"] { font-size: 26px !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-eyebrow">
+    <span class="academy-tag">TechTutor Academy</span>
+    <div class="dot"></div>
+    <span class="prepared-for">Personal Program</span>
+  </div>
+  <h1>A plan for<br><em>Vasco Connor.</em></h1>
+  <p class="hero-sub">A 10-lesson personal program covering game completion, PWA setup, promotional video, landing page, and App Store submission.</p>
+  <div class="meta-pills">
+    <div class="meta-pill"><span>Sessions</span> 10 lessons</div>
+    <div class="meta-pill"><span>Duration</span> 90 min each</div>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="container">
+
+  <!-- ── PHASE 1 ── -->
+  <div class="phase-header phase-green">
+    <span class="phase-num">Phase 01</span>
+    <h2 class="phase-title">Game Completion &amp; PWA</h2>
+    <span class="phase-lessons">Lessons 1 – 3</span>
+  </div>
+
+  <div class="lesson visible">
+    <div class="lesson-num">01</div>
+    <div class="lesson-body">
+      <h3 class="lesson-title">Game Review, Gap Analysis &amp; PWA Intro</h3>
+      <p class="lesson-desc">We review Vasco Connor's existing sustainability game together, identify the remaining 30–40% of work, and create a clear task list to finish it. We also introduce the concept of Progressive Web Apps — what they are, why they matter, and what making this game a PWA will require: a web manifest, a service worker, and HTTPS deployment.</p>
+      <div class="lesson-tags">
+        <span class="tag tag-green">Project planning</span>
+        <span class="tag tag-green">PWA concepts</span>
+        <span class="tag tag-green">Code review</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson visible">
+    <div class="lesson-num">02</div>
+    <div class="lesson-body">
+      <h3 class="lesson-title">Complete the Game &amp; Add PWA Foundation</h3>
+      <p class="lesson-desc">We finish the remaining gameplay features — mechanics, win/lose states, and scoring. At the same time, we add the web app manifest and a basic service worker so the game is installable on mobile. The game is deployed to Vercel with HTTPS live by the end of this session.</p>
+      <div class="lesson-tags">
+        <span class="tag tag-green">JavaScript</span>
+        <span class="tag tag-green">Service worker</span>
+        <span class="tag tag-green">manifest.json</span>
+        <span class="tag tag-green">Vercel deploy</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson visible">
+    <div class="lesson-num">03</div>
+    <div class="lesson-body">
+      <h3 class="lesson-title">Polish, Game Feel &amp; PWA Testing</h3>
+      <p class="lesson-desc">Visual polish pass — animations, transitions, and sound feedback. Full playthrough and bug fixing. We test the PWA on a real mobile device: install to home screen, check offline behaviour, and run a Lighthouse audit to ensure the game passes PWA standards. Game is officially signed off as complete.</p>
+      <div class="lesson-tags">
+        <span class="tag tag-green">CSS animations</span>
+        <span class="tag tag-green">PWA audit</span>
+        <span class="tag tag-green">Lighthouse</span>
+        <span class="tag tag-green">Mobile testing</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PHASE 2 ── -->
+  <div class="phase-header phase-blue">
+    <span class="phase-num">Phase 02</span>
+    <h2 class="phase-title">Promotional Video</h2>
+    <span class="phase-lessons">Lessons 4 – 5</span>
+  </div>
+
+  <div class="lesson visible">
+    <div class="lesson-num">04</div>
+    <div class="lesson-body">
+      <h3 class="lesson-title">Storyboard &amp; AI Video Generation</h3>
+      <p class="lesson-desc">We plan the promotional video with a script and storyboard. Vasco Connor is introduced to Seedance (ByteDance's AI video generator, currently #1 on the global video leaderboard) via Dreamina. We record gameplay footage, design the visual style, and generate the first AI video clips using text-to-video and image-to-video prompts. We use a draft-first approach at 720p before committing to 1080p renders.</p>
+      <div class="lesson-tags">
+        <span class="tag tag-blue">Storyboarding</span>
+        <span class="tag tag-blue">Seedance / Dreamina</span>
+        <span class="tag tag-blue">AI video prompting</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson visible">
+    <div class="lesson-num">05</div>
+    <div class="lesson-body">
+      <h3 class="lesson-title">Video Production &amp; Export</h3>
+      <p class="lesson-desc">We assemble the final video in CapCut — combining AI-generated clips, gameplay footage, music, titles, and a call to action. Final 1080p renders are approved in Seedance. The finished video is exported and uploaded to YouTube as a shareable promo asset ready for the landing page.</p>
+      <div class="lesson-tags">
+        <span class="tag tag-blue">CapCut editing</span>
+        <span class="tag tag-blue">1080p export</span>
+        <span class="tag tag-blue">YouTube upload</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PHASE 3 ── -->
+  <div class="phase-header phase-purple">
+    <span class="phase-num">Phase 03</span>
+    <h2 class="phase-title">Landing Page</h2>
+    <span class="phase-lessons">Lessons 6 – 7</span>
+  </div>
+
+  <div class="lesson visible">
+    <div class="lesson-num">06</div>
+    <div class="lesson-body">
+      <h3 class="lesson-title">Landing Page Design &amp; Structure</h3>
+      <p class="lesson-desc">We plan and design the game's landing page — hero section, embedded promo video, game link, sustainability message, and a call to action. Vasco Connor designs the layout and begins coding in HTML and CSS using Cursor. We discuss what makes a great game landing page and how to communicate the sustainability theme visually.</p>
+      <div class="lesson-tags">
+        <span class="tag tag-purple">HTML / CSS</span>
+        <span class="tag tag-purple">Web design</span>
+        <span class="tag tag-purple">Cursor</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson visible">
+    <div class="lesson-num">07</div>
+    <div class="lesson-body">
+      <h3 class="lesson-title">Build, Polish &amp; Publish</h3>
+      <p class="lesson-desc">We complete and deploy the landing page to Vercel. The promo video is embedded, the game link is live, and the page is responsive on mobile. We do a basic SEO check — page title, meta description, and Open Graph tags so it looks great when shared on social media. The live URL is shared with family and friends.</p>
+      <div class="lesson-tags">
+        <span class="tag tag-purple">Vercel deploy</span>
+        <span class="tag tag-purple">Responsive design</span>
+        <span class="tag tag-purple">SEO basics</span>
+        <span class="tag tag-purple">Open Graph</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PHASE 4 ── -->
+  <div class="phase-header phase-amber">
+    <span class="phase-num">Phase 04</span>
+    <h2 class="phase-title">App Store</h2>
+    <span class="phase-lessons">Lessons 8 – 10</span>
+  </div>
+
+  <div class="lesson visible">
+    <div class="lesson-num">08</div>
+    <div class="lesson-body">
+      <h3 class="lesson-title">iOS Wrapper — WebView App in Xcode</h3>
+      <p class="lesson-desc">Introduction to Xcode and the basics of Swift. We wrap the existing web game in a WKWebView iOS app — no rewriting needed. The game runs exactly as-is inside a native iOS shell. We set up the project, configure the bundle identifier, and test on the simulator. We also walk through the Apple Developer account setup and what to expect from the review process.</p>
+      <div class="lesson-tags">
+        <span class="tag tag-amber">Swift</span>
+        <span class="tag tag-amber">Xcode</span>
+        <span class="tag tag-amber">WKWebView</span>
+        <span class="tag tag-amber">iOS simulator</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson visible">
+    <div class="lesson-num">09</div>
+    <div class="lesson-body">
+      <h3 class="lesson-title">App Store Assets &amp; Metadata</h3>
+      <p class="lesson-desc">We create all required App Store assets — app icon set, launch screen, and screenshots for different device sizes. Vasco Connor writes the app name, description, keywords, age rating, and selects the right category. We walk through App Store Connect together and set up the app listing end to end.</p>
+      <div class="lesson-tags">
+        <span class="tag tag-amber">App Store Connect</span>
+        <span class="tag tag-amber">App icons</span>
+        <span class="tag tag-amber">Screenshots</span>
+        <span class="tag tag-amber">Metadata</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson visible">
+    <div class="lesson-num">10</div>
+    <div class="lesson-body">
+      <h3 class="lesson-title">TestFlight, Review &amp; Submission</h3>
+      <p class="lesson-desc">We upload the build via TestFlight for internal testing and do a final review checklist — privacy policy basics, content guidelines, and age rating. Once everything is confirmed, we submit for App Store review. Vasco Connor leaves with a complete, submitted app and a clear understanding of how to manage future updates independently.</p>
+      <div class="lesson-tags">
+        <span class="tag tag-amber">TestFlight</span>
+        <span class="tag tag-amber">App review</span>
+        <span class="tag tag-amber">Submission</span>
+        <span class="tag tag-amber">Publishing</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TOOLS ── -->
+  <section class="tools-section">
+    <h2 class="tools-heading">Tools &amp; Pricing</h2>
+    <p class="tools-sub">Everything Vasco Connor needs for the program — and what it costs.</p>
+
+    <div class="tools-grid">
+
+      <div class="tool-card">
+        <div class="tool-icon">💻</div>
+        <div>
+          <div class="tool-name">Cursor <span class="tool-badge badge-owned">Already owned</span></div>
+          <div class="tool-price price-zero">$0 additional</div>
+          <div class="tool-desc">AI-powered code editor used for all game development, PWA setup, landing page, and Swift wrapper. Vasco Connor already has an active Pro subscription.</div>
+          <div class="tool-url">cursor.com · Pro $20/month</div>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">🌐</div>
+        <div>
+          <div class="tool-name">Vercel <span class="tool-badge badge-free">Free</span></div>
+          <div class="tool-price price-free">Free</div>
+          <div class="tool-desc">Hosts the PWA game and landing page. Free Hobby plan includes HTTPS, fast CDN, and custom domains — everything needed for PWA compliance.</div>
+          <div class="tool-url">vercel.com · Hobby plan</div>
+        </div>
+      </div>
+
+      <div class="tool-card" style="grid-column: 1 / -1;">
+        <div class="tool-icon">🎬</div>
+        <div style="flex:1">
+          <div class="tool-name">Seedance via Dreamina <span class="tool-badge badge-required">Subscription required</span></div>
+          <div class="tool-price price-paid">$18 – $45 / month</div>
+          <div class="tool-desc">ByteDance's AI video generation model — #1 on the global video leaderboard. Used in lessons 4–5 to create high-quality 1080p promo clips. Access via Dreamina, ByteDance's international platform (English, international payments). Only needed for 1–2 months — cancel after the video is complete.</div>
+          <div class="seedance-options">
+            <div class="s-option rec">
+              <div class="s-option-label">Recommended</div>
+              <div class="s-option-name">Dreamina Standard</div>
+              <div class="s-option-price">~$18 / month</div>
+              <div class="s-option-note">Good credit pool for 2 lessons. Best value for this project.</div>
+            </div>
+            <div class="s-option">
+              <div class="s-option-label">More credits</div>
+              <div class="s-option-name">Dreamina Advanced</div>
+              <div class="s-option-price">~$45 / month</div>
+              <div class="s-option-note">~3× the credits of Standard. Better if Vasco Connor wants to iterate heavily and produce multiple clip variations.</div>
+            </div>
+          </div>
+          <div class="tool-url" style="margin-top:10px;">dreamina.capcut.com · Tip: draft at 720p first, only render final approved clips at 1080p to save credits.</div>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">📹</div>
+        <div>
+          <div class="tool-name">CapCut <span class="tool-badge badge-free">Free</span></div>
+          <div class="tool-price price-free">Free</div>
+          <div class="tool-desc">Video editor used to assemble the promo video. Made by ByteDance — integrates natively with Dreamina/Seedance footage. Free tier is more than enough.</div>
+          <div class="tool-url">capcut.com · Free</div>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">🍎</div>
+        <div>
+          <div class="tool-name">Apple Developer Program <span class="tool-badge badge-required">Must purchase</span></div>
+          <div class="tool-price price-paid">$99 / year</div>
+          <div class="tool-desc">Required for App Store submission and TestFlight. Enroll at least one week before lesson 8 — activation takes 1–2 business days. Xcode is free on any Mac.</div>
+          <div class="tool-url">developer.apple.com/programs · Annual fee</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- COST SUMMARY -->
+    <div class="cost-box">
+      <div class="cost-box-title">Estimated tools cost for Ms Saras</div>
+      <div class="cost-line"><span class="label">Cursor (already owned)</span><span class="val val-free">$0</span></div>
+      <div class="cost-line"><span class="label">Vercel</span><span class="val val-free">$0</span></div>
+      <div class="cost-line"><span class="label">CapCut</span><span class="val val-free">$0</span></div>
+      <div class="cost-line"><span class="label">Seedance / Dreamina Standard (1–2 months)</span><span class="val val-paid">$18 – $36</span></div>
+      <div class="cost-line"><span class="label">Apple Developer Program</span><span class="val val-paid">$99</span></div>
+      <div class="cost-total">
+        <span class="label">Total additional spend</span>
+        <span class="amount">$117 – $135</span>
+      </div>
+      <div class="cost-note">Seedance subscription can be cancelled after lessons 4–5 — no ongoing commitment beyond the video production phase.</div>
+    </div>
+
+  </section>
+
+  <!-- PROGRAM FEE -->
+  <section style="margin-top: 56px; padding-top: 40px; border-top: 2px solid var(--ink);">
+    <h2 style="font-family: 'DM Serif Display', serif; font-size: 32px; letter-spacing: -0.02em; margin-bottom: 6px;">Program Fee</h2>
+    <p style="font-size: 14px; color: var(--ink-light); margin-bottom: 28px;">The cost of the 10-lesson personal program with TechTutor Academy.</p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+      <div style="background: white; border: 1px solid var(--rule); border-radius: 14px; padding: 28px 24px;">
+        <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-light); margin-bottom: 8px;">Vietnamese Dong</div>
+        <div style="font-family: 'DM Serif Display', serif; font-size: 42px; letter-spacing: -0.02em; line-height: 1;">8,000,000</div>
+        <div style="font-size: 14px; color: var(--ink-light); margin-top: 6px;">VND</div>
+      </div>
+      <div style="background: var(--ink); border-radius: 14px; padding: 28px 24px;">
+        <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(245,241,232,0.5); margin-bottom: 8px;">US Dollar equivalent</div>
+        <div style="font-family: 'DM Serif Display', serif; font-size: 42px; letter-spacing: -0.02em; line-height: 1; color: var(--cream);">~$304</div>
+        <div style="font-size: 14px; color: rgba(245,241,232,0.5); margin-top: 6px;">USD &middot; at ~26,300 VND/USD</div>
+      </div>
+    </div>
+    <div style="margin-top: 12px; background: var(--green-light); border-radius: 10px; padding: 14px 18px; font-size: 13px; color: var(--green); line-height: 1.5;">
+      <strong style="font-weight: 500;">10 sessions &middot; 90 minutes each</strong> — This covers all four phases: game completion &amp; PWA, promotional video, landing page, and App Store submission.
+    </div>
+  </section>
+
+
+  <!-- GLOSSARY -->
+  <section style="margin-top: 56px; padding-top: 40px; border-top: 2px solid var(--ink);">
+    <h2 style="font-family: 'DM Serif Display', serif; font-size: 32px; letter-spacing: -0.02em; margin-bottom: 6px;">Terms Explained</h2>
+    <p style="font-size: 14px; color: var(--ink-light); margin-bottom: 28px;">A plain-English guide to the technical terms used in this program.</p>
+
+    <div style="display: flex; flex-direction: column; gap: 2px;">
+
+      <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 20px 24px; display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start;">
+        <div>
+          <div style="font-family: 'DM Serif Display', serif; font-size: 17px; margin-bottom: 2px;">PWA</div>
+          <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint);">Progressive Web App</div>
+        </div>
+        <div style="font-size: 14px; color: var(--ink-light); line-height: 1.6;">A website that behaves like a real app. Once set up, visitors can tap "Add to Home Screen" on their phone and the game appears like a normal app — with its own icon, no browser bar, and the ability to work offline. No App Store required for this step.</div>
+      </div>
+
+      <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 20px 24px; display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start;">
+        <div>
+          <div style="font-family: 'DM Serif Display', serif; font-size: 17px; margin-bottom: 2px;">Service Worker</div>
+          <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint);">Background helper</div>
+        </div>
+        <div style="font-size: 14px; color: var(--ink-light); line-height: 1.6;">A small invisible script that runs in the background of the game. It allows the game to load even when there's no internet connection, by saving a copy of the game on the device. Think of it as the game's personal offline backup.</div>
+      </div>
+
+      <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 20px 24px; display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start;">
+        <div>
+          <div style="font-family: 'DM Serif Display', serif; font-size: 17px; margin-bottom: 2px;">Vercel</div>
+          <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint);">Hosting platform</div>
+        </div>
+        <div style="font-size: 14px; color: var(--ink-light); line-height: 1.6;">The platform where Vasco Connor's game and landing page will be published and made available to the world. It gives the project a real web address (URL) that anyone can visit, and keeps the site running 24/7. The free plan is sufficient for this project.</div>
+      </div>
+
+      <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 20px 24px; display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start;">
+        <div>
+          <div style="font-family: 'DM Serif Display', serif; font-size: 17px; margin-bottom: 2px;">Seedance</div>
+          <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint);">AI video tool</div>
+        </div>
+        <div style="font-size: 14px; color: var(--ink-light); line-height: 1.6;">An AI tool made by ByteDance (the same company behind TikTok) that generates cinematic video clips from text descriptions or images. Vasco Connor will use it to create the promotional video for his game — describing scenes in words and letting the AI bring them to life in high quality.</div>
+      </div>
+
+      <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 20px 24px; display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start;">
+        <div>
+          <div style="font-family: 'DM Serif Display', serif; font-size: 17px; margin-bottom: 2px;">Cursor</div>
+          <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint);">AI code editor</div>
+        </div>
+        <div style="font-size: 14px; color: var(--ink-light); line-height: 1.6;">The tool Vasco Connor writes his code in. It's like Microsoft Word, but for programming — and it has a built-in AI assistant that helps suggest, fix, and explain code as Vasco Connor works. Vasco Connor already has a subscription to this.</div>
+      </div>
+
+      <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 20px 24px; display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start;">
+        <div>
+          <div style="font-family: 'DM Serif Display', serif; font-size: 17px; margin-bottom: 2px;">Xcode</div>
+          <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint);">Apple's dev tool</div>
+        </div>
+        <div style="font-size: 14px; color: var(--ink-light); line-height: 1.6;">Apple's official free software for building iPhone and iPad apps. Vasco Connor will use it to wrap his existing web game into an iOS app — essentially putting it in an Apple-approved container so it can be submitted to the App Store. Requires a Mac to run.</div>
+      </div>
+
+      <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 20px 24px; display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start;">
+        <div>
+          <div style="font-family: 'DM Serif Display', serif; font-size: 17px; margin-bottom: 2px;">TestFlight</div>
+          <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint);">Apple's testing tool</div>
+        </div>
+        <div style="font-size: 14px; color: var(--ink-light); line-height: 1.6;">Apple's official way to test an app before it goes live on the App Store. It lets Vasco Connor install the app on a real iPhone and check that everything works correctly before submitting it for Apple's review. Think of it as a private "soft launch."</div>
+      </div>
+
+      <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 20px 24px; display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start;">
+        <div>
+          <div style="font-family: 'DM Serif Display', serif; font-size: 17px; margin-bottom: 2px;">Apple Developer Program</div>
+          <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint);">App Store membership</div>
+        </div>
+        <div style="font-size: 14px; color: var(--ink-light); line-height: 1.6;">A paid annual membership ($99 USD/year) required by Apple before any app can be submitted to the App Store. It gives Vasco Connor the ability to publish apps under his own name and access the tools needed for submission. This is the only mandatory purchase for the App Store phase.</div>
+      </div>
+
+      <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 20px 24px; display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start;">
+        <div>
+          <div style="font-family: 'DM Serif Display', serif; font-size: 17px; margin-bottom: 2px;">Landing Page</div>
+          <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint);">Promotional website</div>
+        </div>
+        <div style="font-size: 14px; color: var(--ink-light); line-height: 1.6;">A single-page website designed to showcase and promote the game. It will include the promo video, a link to play the game, a description of the sustainability theme, and a call to action. This is the public face of the project — something Vasco Connor can share with anyone.</div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- OUTCOMES -->
+  <section style="margin-top: 56px; padding-top: 40px; border-top: 2px solid var(--ink);">
+    <h2 style="font-family: 'DM Serif Display', serif; font-size: 32px; letter-spacing: -0.02em; margin-bottom: 6px;">Learning Outcomes</h2>
+    <p style="font-size: 14px; color: var(--ink-light); margin-bottom: 36px;">What Vasco Connor will walk away with by the end of the program.</p>
+
+    <!-- DELIVERABLES -->
+    <div style="margin-bottom: 40px;">
+      <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin-bottom: 14px;">What he will have built</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+
+        <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 22px;">
+          <div style="font-size: 22px; margin-bottom: 10px;">🎮</div>
+          <div style="font-family: 'DM Serif Display', serif; font-size: 18px; margin-bottom: 6px;">A finished, published game</div>
+          <div style="font-size: 13px; color: var(--ink-light); line-height: 1.6;">Vasco Connor's sustainability game — completed, polished, and live on the internet with a real URL anyone can visit and play. Installable on any phone like a native app.</div>
+        </div>
+
+        <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 22px;">
+          <div style="font-size: 22px; margin-bottom: 10px;">🎬</div>
+          <div style="font-family: 'DM Serif Display', serif; font-size: 18px; margin-bottom: 6px;">A professional promo video</div>
+          <div style="font-size: 13px; color: var(--ink-light); line-height: 1.6;">A high-quality 1080p promotional video for the game, created using industry-leading AI video tools. Published on YouTube and ready to share on any platform.</div>
+        </div>
+
+        <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 22px;">
+          <div style="font-size: 22px; margin-bottom: 10px;">🌐</div>
+          <div style="font-family: 'DM Serif Display', serif; font-size: 18px; margin-bottom: 6px;">A live landing page</div>
+          <div style="font-size: 13px; color: var(--ink-light); line-height: 1.6;">A dedicated website for the game — featuring the promo video, game description, and a link to play. Designed, coded, and deployed by Vasco Connor himself.</div>
+        </div>
+
+        <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 22px;">
+          <div style="font-size: 22px; margin-bottom: 10px;">🍎</div>
+          <div style="font-family: 'DM Serif Display', serif; font-size: 18px; margin-bottom: 6px; ">An App Store submission</div>
+          <div style="font-size: 13px; color: var(--ink-light); line-height: 1.6;">Vasco Connor's game submitted to the Apple App Store under his own developer account — a milestone most adults have never reached. A real, searchable app.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div>
+      <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin-bottom: 14px;">What he will have learned</div>
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+
+        <div style="background: white; border: 1px solid var(--rule); border-radius: 10px; padding: 16px 20px; display: flex; gap: 16px; align-items: flex-start;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; margin-top: 1px;">✓</div>
+          <div>
+            <div style="font-weight: 500; font-size: 14px; margin-bottom: 2px;">How to take a project from 60% to fully finished</div>
+            <div style="font-size: 13px; color: var(--ink-light); line-height: 1.5;">Planning, prioritising, and executing the final stretch of a real coding project — one of the most valuable skills in software development.</div>
+          </div>
+        </div>
+
+        <div style="background: white; border: 1px solid var(--rule); border-radius: 10px; padding: 16px 20px; display: flex; gap: 16px; align-items: flex-start;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; margin-top: 1px;">✓</div>
+          <div>
+            <div style="font-weight: 500; font-size: 14px; margin-bottom: 2px;">How to turn a website into an installable app</div>
+            <div style="font-size: 13px; color: var(--ink-light); line-height: 1.5;">Using Progressive Web App technology to make any website feel and behave like a native mobile app — no App Store needed.</div>
+          </div>
+        </div>
+
+        <div style="background: white; border: 1px solid var(--rule); border-radius: 10px; padding: 16px 20px; display: flex; gap: 16px; align-items: flex-start;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; margin-top: 1px;">✓</div>
+          <div>
+            <div style="font-weight: 500; font-size: 14px; margin-bottom: 2px;">How to use AI tools for professional content creation</div>
+            <div style="font-size: 13px; color: var(--ink-light); line-height: 1.5;">Prompting and directing AI video generation tools to produce high-quality promotional content — a skill increasingly valued across creative and tech industries.</div>
+          </div>
+        </div>
+
+        <div style="background: white; border: 1px solid var(--rule); border-radius: 10px; padding: 16px 20px; display: flex; gap: 16px; align-items: flex-start;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; margin-top: 1px;">✓</div>
+          <div>
+            <div style="font-weight: 500; font-size: 14px; margin-bottom: 2px;">How to design and launch a real website from scratch</div>
+            <div style="font-size: 13px; color: var(--ink-light); line-height: 1.5;">Building and deploying a professional landing page — combining design thinking with hands-on HTML, CSS, and deployment skills.</div>
+          </div>
+        </div>
+
+        <div style="background: white; border: 1px solid var(--rule); border-radius: 10px; padding: 16px 20px; display: flex; gap: 16px; align-items: flex-start;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; margin-top: 1px;">✓</div>
+          <div>
+            <div style="font-weight: 500; font-size: 14px; margin-bottom: 2px;">How to publish an app on the Apple App Store</div>
+            <div style="font-size: 13px; color: var(--ink-light); line-height: 1.5;">The full end-to-end process of wrapping a web project into an iOS app, preparing all assets, and navigating Apple's submission process independently.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>TechTutor Academy · Personal Program</span>
+  <span>Prepared for Ms Saras &amp; Vasco Connor</span>
+</footer>
+
+
+
+</body>
+</html>
