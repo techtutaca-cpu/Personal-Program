@@ -367,41 +367,69 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+
+  /* ── GLOSSARY CARDS (fix inline grid) ── */
+  .glossary-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 20px 24px;
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+
+  /* ── MOBILE ── */
   @media (max-width: 680px) {
-    /* Layout */
-    .hero { padding: 40px 20px 32px; }
-    .container { padding-left: 20px; padding-right: 20px; padding-bottom: 60px; }
-    .footer { flex-direction: column; gap: 8px; padding: 24px 20px; text-align: center; }
+    /* Core */
+    .hero { padding: 28px 16px 24px; }
+    .container { padding-left: 16px; padding-right: 16px; padding-bottom: 48px; }
+    .footer { flex-direction: column; gap: 6px; text-align: center; padding: 20px 16px; }
 
     /* Hero */
-    .hero h1 { font-size: 36px; }
-    .hero-sub { font-size: 15px; }
-    .hero-eyebrow { flex-wrap: wrap; gap: 8px; }
+    .hero h1 { font-size: 32px; }
+    .hero-sub { font-size: 14px; margin-bottom: 20px; margin-top: 8px; }
+    .hero-eyebrow { margin-bottom: 16px; flex-wrap: wrap; }
     .meta-pills { gap: 6px; }
     .meta-pill { font-size: 12px; padding: 5px 12px; }
 
     /* Phase headers */
-    .phase-header { flex-wrap: wrap; gap: 4px; padding: 36px 0 16px; }
-    .phase-title { font-size: 22px; }
-    .phase-lessons { display: none; }
+    .phase-header { padding: 28px 0 12px; flex-wrap: wrap; gap: 2px; }
+    .phase-title { font-size: 19px; flex: 1 1 100%; }
     .phase-num { min-width: unset; }
+    .phase-lessons { display: none; }
 
     /* Lessons */
-    .lesson { grid-template-columns: 36px 1fr; gap: 0 14px; padding: 20px 0; }
-    .lesson-num { font-size: 22px; }
-    .lesson-title { font-size: 17px; }
-    .lesson-desc { font-size: 13px; }
+    .lesson { grid-template-columns: 32px 1fr; gap: 0 12px; padding: 16px 0; }
+    .lesson-num { font-size: 18px; }
+    .lesson-title { font-size: 16px; }
+    .lesson-desc { font-size: 13px; max-width: 100%; margin-bottom: 10px; }
+    .tag { font-size: 10px; padding: 2px 8px; }
 
     /* Tools */
-    .tools-grid { grid-template-columns: 1fr; }
+    .tools-section { margin-top: 40px; padding-top: 24px; }
+    .tools-heading { font-size: 22px; }
+    .tools-sub { font-size: 13px; margin-bottom: 20px; }
+    .tools-grid { grid-template-columns: 1fr; gap: 8px; margin-bottom: 16px; }
+    .tool-card { padding: 14px; gap: 12px; }
+    .tool-name { font-size: 13px; }
+    .tool-desc { font-size: 12px; }
+    .tool-price { font-size: 13px; }
     .seedance-options { grid-template-columns: 1fr; }
-    .tools-heading { font-size: 26px; }
 
     /* Cost box */
-    .cost-box { padding: 20px; }
-    .cost-total .amount { font-size: 26px; }
+    .cost-box { padding: 16px 18px; border-radius: 10px; }
+    .cost-box-title { font-size: 15px; margin-bottom: 12px; }
+    .cost-line { font-size: 12px; padding: 5px 0; }
+    .cost-total .label { font-size: 12px; }
+    .cost-total .amount { font-size: 22px; }
+    .cost-note { font-size: 11px; }
 
-    /* Inline grids in outcomes, glossary, program fee */
+    /* Glossary — collapse 2-col to 1-col */
+    .glossary-card { grid-template-columns: 1fr; gap: 4px; padding: 14px 16px; }
+
+    /* Inline grids in outcomes + program fee */
     div[style*="grid-template-columns: 1fr 1fr"] {
       display: flex !important;
       flex-direction: column !important;
@@ -412,11 +440,17 @@
       gap: 4px !important;
     }
 
-    /* Program fee numbers */
-    div[style*="font-size: 42px"] { font-size: 32px !important; }
-
     /* Section headings */
-    h2[style*="font-size: 32px"] { font-size: 26px !important; }
+    h2[style*="font-size: 32px"] { font-size: 22px !important; }
+    p[style*="font-size: 14px"] { font-size: 13px !important; }
+    div[style*="font-size: 42px"] { font-size: 28px !important; }
+    div[style*="padding: 28px 24px"] { padding: 16px !important; }
+    div[style*="margin-top: 56px"] { margin-top: 32px !important; }
+    div[style*="padding-top: 40px"] { padding-top: 24px !important; }
+    div[style*="margin-bottom: 40px"] { margin-bottom: 24px !important; }
+
+    /* Skill cards */
+    div[style*="padding: 16px 20px"] { padding: 14px 14px !important; }
   }
 </style>
 </head>
@@ -723,7 +757,7 @@
 
     <div style="display: flex; flex-direction: column; gap: 2px;">
 
-      <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 20px 24px; display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start;">
+      <div class="glossary-card">
         <div>
           <div style="font-family: 'DM Serif Display', serif; font-size: 17px; margin-bottom: 2px;">PWA</div>
           <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint);">Progressive Web App</div>
@@ -731,7 +765,7 @@
         <div style="font-size: 14px; color: var(--ink-light); line-height: 1.6;">A website that behaves like a real app. Once set up, visitors can tap "Add to Home Screen" on their phone and the game appears like a normal app — with its own icon, no browser bar, and the ability to work offline. No App Store required for this step.</div>
       </div>
 
-      <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 20px 24px; display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start;">
+      <div class="glossary-card">
         <div>
           <div style="font-family: 'DM Serif Display', serif; font-size: 17px; margin-bottom: 2px;">Service Worker</div>
           <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint);">Background helper</div>
@@ -739,7 +773,7 @@
         <div style="font-size: 14px; color: var(--ink-light); line-height: 1.6;">A small invisible script that runs in the background of the game. It allows the game to load even when there's no internet connection, by saving a copy of the game on the device. Think of it as the game's personal offline backup.</div>
       </div>
 
-      <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 20px 24px; display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start;">
+      <div class="glossary-card">
         <div>
           <div style="font-family: 'DM Serif Display', serif; font-size: 17px; margin-bottom: 2px;">Vercel</div>
           <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint);">Hosting platform</div>
@@ -747,7 +781,7 @@
         <div style="font-size: 14px; color: var(--ink-light); line-height: 1.6;">The platform where Vasco Connor's game and landing page will be published and made available to the world. It gives the project a real web address (URL) that anyone can visit, and keeps the site running 24/7. The free plan is sufficient for this project.</div>
       </div>
 
-      <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 20px 24px; display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start;">
+      <div class="glossary-card">
         <div>
           <div style="font-family: 'DM Serif Display', serif; font-size: 17px; margin-bottom: 2px;">Seedance</div>
           <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint);">AI video tool</div>
@@ -755,7 +789,7 @@
         <div style="font-size: 14px; color: var(--ink-light); line-height: 1.6;">An AI tool made by ByteDance (the same company behind TikTok) that generates cinematic video clips from text descriptions or images. Vasco Connor will use it to create the promotional video for his game — describing scenes in words and letting the AI bring them to life in high quality.</div>
       </div>
 
-      <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 20px 24px; display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start;">
+      <div class="glossary-card">
         <div>
           <div style="font-family: 'DM Serif Display', serif; font-size: 17px; margin-bottom: 2px;">Cursor</div>
           <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint);">AI code editor</div>
@@ -763,7 +797,7 @@
         <div style="font-size: 14px; color: var(--ink-light); line-height: 1.6;">The tool Vasco Connor writes his code in. It's like Microsoft Word, but for programming — and it has a built-in AI assistant that helps suggest, fix, and explain code as Vasco Connor works. Vasco Connor already has a subscription to this.</div>
       </div>
 
-      <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 20px 24px; display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start;">
+      <div class="glossary-card">
         <div>
           <div style="font-family: 'DM Serif Display', serif; font-size: 17px; margin-bottom: 2px;">Xcode</div>
           <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint);">Apple's dev tool</div>
@@ -771,7 +805,7 @@
         <div style="font-size: 14px; color: var(--ink-light); line-height: 1.6;">Apple's official free software for building iPhone and iPad apps. Vasco Connor will use it to wrap his existing web game into an iOS app — essentially putting it in an Apple-approved container so it can be submitted to the App Store. Requires a Mac to run.</div>
       </div>
 
-      <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 20px 24px; display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start;">
+      <div class="glossary-card">
         <div>
           <div style="font-family: 'DM Serif Display', serif; font-size: 17px; margin-bottom: 2px;">TestFlight</div>
           <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint);">Apple's testing tool</div>
@@ -779,7 +813,7 @@
         <div style="font-size: 14px; color: var(--ink-light); line-height: 1.6;">Apple's official way to test an app before it goes live on the App Store. It lets Vasco Connor install the app on a real iPhone and check that everything works correctly before submitting it for Apple's review. Think of it as a private "soft launch."</div>
       </div>
 
-      <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 20px 24px; display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start;">
+      <div class="glossary-card">
         <div>
           <div style="font-family: 'DM Serif Display', serif; font-size: 17px; margin-bottom: 2px;">Apple Developer Program</div>
           <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint);">App Store membership</div>
@@ -787,7 +821,7 @@
         <div style="font-size: 14px; color: var(--ink-light); line-height: 1.6;">A paid annual membership ($99 USD/year) required by Apple before any app can be submitted to the App Store. It gives Vasco Connor the ability to publish apps under his own name and access the tools needed for submission. This is the only mandatory purchase for the App Store phase.</div>
       </div>
 
-      <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 20px 24px; display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start;">
+      <div class="glossary-card">
         <div>
           <div style="font-family: 'DM Serif Display', serif; font-size: 17px; margin-bottom: 2px;">Landing Page</div>
           <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint);">Promotional website</div>
